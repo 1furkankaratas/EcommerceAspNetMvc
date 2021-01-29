@@ -91,13 +91,13 @@
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
     <Content Include="wwwroot\Cart.html" />
-    <Content Include="wwwroot\Content\bootstrap-theme.css" />
-    <Content Include="wwwroot\Content\bootstrap-theme.min.css" />
-    <Content Include="wwwroot\Content\bootstrap.css" />
-    <Content Include="wwwroot\Content\bootstrap.min.css" />
-    <Content Include="wwwroot\Content\font-awesome.css" />
-    <Content Include="wwwroot\Content\font-awesome.min.css" />
-    <Content Include="wwwroot\Content\site.css" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\Site.css" />
     <Content Include="wwwroot\fonts\fontawesome-webfont.svg" />
     <Content Include="wwwroot\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="wwwroot\ForgotPassword.html" />
@@ -110,6 +110,9 @@
     <Content Include="wwwroot\Register.html" />
     <Content Include="wwwroot\Scripts\bootstrap.js" />
     <Content Include="wwwroot\Scripts\bootstrap.min.js" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\i\Index.cshtml" />
     <None Include="wwwroot\Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="wwwroot\Scripts\jquery-1.9.1.js" />
     <Content Include="wwwroot\Scripts\jquery-1.9.1.min.js" />
@@ -132,10 +135,10 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-    <Content Include="wwwroot\Content\bootstrap-theme.css.map" />
-    <Content Include="wwwroot\Content\bootstrap-theme.min.css.map" />
-    <Content Include="wwwroot\Content\bootstrap.css.map" />
-    <Content Include="wwwroot\Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="wwwroot\fonts\fontawesome-webfont.eot" />
     <Content Include="wwwroot\fonts\fontawesome-webfont.ttf" />
     <Content Include="wwwroot\fonts\fontawesome-webfont.woff" />
@@ -150,7 +153,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\i\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
