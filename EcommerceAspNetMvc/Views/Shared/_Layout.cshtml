@@ -1,10 +1,10 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title>@ViewBag.Title</title>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <link href="~/assets/Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/assets//Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/assets/Content/font-awesome.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
     <link href="~/assets/Content/site.css" rel="stylesheet" />
     <script src="~/assets/Scripts/jquery-1.9.1.min.js"></script>
@@ -33,17 +33,17 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="../../wwwroot/Register.html">
+                        <a href="#">
                             <span class="glyphicon glyphicon-user"></span>&nbsp;Kayıt Ol
                         </a>
                     </li>
                     <li>
-                        <a href="../../wwwroot/Login.html">
+                        <a href="#">
                             <span class="glyphicon glyphicon-log-in"></span>&nbsp;Giriş
                         </a>
                     </li>
                     <li>
-                        <a href="../../wwwroot/profile.html">
+                        <a href="#">
                             <span class="glyphicon glyphicon-user"></span>&nbsp;Kullanıcı Adı
                         </a>
                     </li>
@@ -56,11 +56,11 @@
                         </a>
 
                         <ul class="dropdown-menu">
-                            <li><a href="../../wwwroot/Product.html">Ürün 1</a></li>
-                            <li><a href="../../wwwroot/Product.html">Ürün 2</a></li>
-                            <li><a href="../../wwwroot/Product.html">Ürün 3</a></li>
+                            <li><a href="#">Ürün 1</a></li>
+                            <li><a href="#">Ürün 2</a></li>
+                            <li><a href="#">Ürün 3</a></li>
                             <li class="divider" role="separator"></li>
-                            <li><a href="../../wwwroot/Cart.html">Sepete Git</a></li>
+                            <li><a href="#">Sepete Git</a></li>
                         </ul>
 
                     </li>
@@ -73,14 +73,14 @@
                         </a>
 
                         <ul class="dropdown-menu">
-                            <li><a href="../../wwwroot/Message.html">Mesaj 1</a></li>
-                            <li><a href="../../wwwroot/Message.html">Mesaj 2</a></li>
+                            <li><a href="#">Mesaj 1</a></li>
+                            <li><a href="#">Mesaj 2</a></li>
                             <li class="divider" role="separator"></li>
-                            <li><a href="../../wwwroot/Messages.html">Mesajlara Git</a></li>
+                            <li><a href="#">Mesajlara Git</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href="../../wwwroot/signout.html">
+                        <a href="#">
                             <span class="glyphicon glyphicon-log-out"></span>&nbsp;Çıkış
                         </a>
                     </li>
@@ -89,7 +89,7 @@
         </div><!-- /.container-fluid -->
     </nav>
 
-    <div class="col-md-12">
+    <div class="container">
         @RenderBody()
     </div>
 </body>

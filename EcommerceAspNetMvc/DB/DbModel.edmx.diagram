@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9bd516fc1d70415882a8d2a02ef054e6" Name="Diagram1">
+        <EntityTypeShape EntityType="EcommerceAspNetMvcDbModel.Addresses" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EcommerceAspNetMvcDbModel.Categories" Width="1.5" PointX="1.5" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EcommerceAspNetMvcDbModel.Comments" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EcommerceAspNetMvcDbModel.Members" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EcommerceAspNetMvcDbModel.MessageReplies" Width="1.5" PointX="6" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EcommerceAspNetMvcDbModel.Messages" Width="1.5" PointX="3.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EcommerceAspNetMvcDbModel.OrderDetails" Width="1.5" PointX="5.25" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EcommerceAspNetMvcDbModel.Orders" Width="1.5" PointX="3" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EcommerceAspNetMvcDbModel.Products" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EcommerceAspNetMvcDbModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="EcommerceAspNetMvcDbModel.FK_Addresses_Members" ManuallyRouted="false" />
+        <AssociationConnector Association="EcommerceAspNetMvcDbModel.FK_Categories_Categories" ManuallyRouted="false" />
+        <AssociationConnector Association="EcommerceAspNetMvcDbModel.FK_Products_Categories" ManuallyRouted="false" />
+        <AssociationConnector Association="EcommerceAspNetMvcDbModel.FK_Comments_Members" ManuallyRouted="false" />
+        <AssociationConnector Association="EcommerceAspNetMvcDbModel.FK_Comments_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="EcommerceAspNetMvcDbModel.FK_MessageReplies_Members" ManuallyRouted="false" />
+        <AssociationConnector Association="EcommerceAspNetMvcDbModel.FK_Orders_Members" ManuallyRouted="false" />
+        <AssociationConnector Association="EcommerceAspNetMvcDbModel.FK_MessageReplies_Messages" ManuallyRouted="false" />
+        <AssociationConnector Association="EcommerceAspNetMvcDbModel.FK_OrderDetails_Orders" ManuallyRouted="false" />
+        <AssociationConnector Association="EcommerceAspNetMvcDbModel.FK_OrderDetails_Products" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

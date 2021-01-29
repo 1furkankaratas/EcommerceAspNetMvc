@@ -43,7 +43,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -88,18 +96,28 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="DB\DbModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DbModel.Context.cs</LastGenOutput>
+      <DependentUpon>DbModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="DB\DbModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DbModel.edmx</DependentUpon>
+      <LastGenOutput>DbModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
     <Content Include="wwwroot\Cart.html" />
-    <Content Include="assets\Content\bootstrap-theme.css" />
-    <Content Include="assets\Content\bootstrap-theme.min.css" />
-    <Content Include="assets\Content\bootstrap.css" />
-    <Content Include="assets\Content\bootstrap.min.css" />
-    <Content Include="assets\Content\font-awesome.css" />
-    <Content Include="assets\Content\font-awesome.min.css" />
-    <Content Include="assets\Content\Site.css" />
-    <Content Include="assets\fonts\fontawesome-webfont.svg" />
-    <Content Include="assets\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Assets\Content\bootstrap-theme.css" />
+    <Content Include="Assets\Content\bootstrap-theme.min.css" />
+    <Content Include="Assets\Content\bootstrap.css" />
+    <Content Include="Assets\Content\bootstrap.min.css" />
+    <Content Include="Assets\Content\font-awesome.css" />
+    <Content Include="Assets\Content\font-awesome.min.css" />
+    <Content Include="Assets\Content\Site.css" />
+    <Content Include="Assets\fonts\fontawesome-webfont.svg" />
+    <Content Include="Assets\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="wwwroot\ForgotPassword.html" />
     <Content Include="wwwroot\index.html" />
     <Content Include="wwwroot\Login.html" />
@@ -108,51 +126,111 @@
     <Content Include="wwwroot\MyProfile.html" />
     <Content Include="wwwroot\Product.html" />
     <Content Include="wwwroot\Register.html" />
-    <Content Include="assets\Scripts\bootstrap.js" />
-    <Content Include="assets\Scripts\bootstrap.min.js" />
+    <Content Include="Assets\Scripts\bootstrap.js" />
+    <Content Include="Assets\Scripts\bootstrap.min.js" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\i\Index.cshtml" />
-    <None Include="assets\Scripts\jquery-1.9.1.intellisense.js" />
-    <Content Include="assets\Scripts\jquery-1.9.1.js" />
-    <Content Include="assets\Scripts\jquery-1.9.1.min.js" />
+    <None Include="Assets\Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Assets\Scripts\jquery-1.9.1.js" />
+    <Content Include="Assets\Scripts\jquery-1.9.1.min.js" />
     <Content Include="wwwroot\template.html" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\iController.cs" />
+    <Compile Include="DB\Addresses.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Categories.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Comments.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\DbModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DbModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\DbModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\DbModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DbModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Members.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\MemberTypes.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\MessageReplies.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Messages.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\OrderDetails.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Orders.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Products.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\sysdiagrams.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Enums.cs" />
+    <Compile Include="Models\HomeViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
+    <EntityDeploy Include="DB\DbModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DbModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="DB\DbModel.edmx.diagram">
+      <DependentUpon>DbModel.edmx</DependentUpon>
+    </Content>
     <None Include="packages.config" />
+    <Content Include="Views\Shared\_ProductItem.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-    <Content Include="assets\Content\bootstrap-theme.css.map" />
-    <Content Include="assets\Content\bootstrap-theme.min.css.map" />
-    <Content Include="assets\Content\bootstrap.css.map" />
-    <Content Include="assets\Content\bootstrap.min.css.map" />
-    <Content Include="assets\fonts\fontawesome-webfont.eot" />
-    <Content Include="assets\fonts\fontawesome-webfont.ttf" />
-    <Content Include="assets\fonts\fontawesome-webfont.woff" />
-    <Content Include="assets\fonts\fontawesome-webfont.woff2" />
-    <Content Include="assets\fonts\FontAwesome.otf" />
-    <Content Include="assets\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="assets\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="assets\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="assets\fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="assets\Scripts\jquery-1.9.1.min.map" />
+    <Content Include="Assets\Content\bootstrap-theme.css.map" />
+    <Content Include="Assets\Content\bootstrap-theme.min.css.map" />
+    <Content Include="Assets\Content\bootstrap.css.map" />
+    <Content Include="Assets\Content\bootstrap.min.css.map" />
+    <Content Include="Assets\fonts\fontawesome-webfont.eot" />
+    <Content Include="Assets\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Assets\fonts\fontawesome-webfont.woff" />
+    <Content Include="Assets\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Assets\fonts\FontAwesome.otf" />
+    <Content Include="Assets\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Assets\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Assets\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Assets\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Assets\Scripts\jquery-1.9.1.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

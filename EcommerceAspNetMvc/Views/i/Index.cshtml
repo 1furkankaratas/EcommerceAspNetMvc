@@ -1,7 +1,12 @@
-﻿
+﻿@model EcommerceAspNetMvc.Models.HomeViewModel
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Anasayfa";
 }
 
-<h2>Index</h2>
 
+<div class="row">
+    @foreach (var i in Model.Products)
+    {
+        @Html.Partial("_ProductItem", i);
+    }
+</div>

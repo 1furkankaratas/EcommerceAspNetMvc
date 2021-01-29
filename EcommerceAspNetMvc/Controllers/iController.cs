@@ -3,15 +3,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using EcommerceAspNetMvc.DB;
+using EcommerceAspNetMvc.Models;
 
 namespace EcommerceAspNetMvc.Controllers
 {
     public class iController : Controller
     {
-        // GET: i
+        EcommerceDbEntities _context;
+
+        public iController()
+        {
+            _context = new EcommerceDbEntities();
+        }
+
         public ActionResult Index()
         {
-            return View();
+            var model = new HomeViewModel
+            {
+                Products = _context.Products.ToList()
+            };
+            return View(model);
         }
     }
 }
