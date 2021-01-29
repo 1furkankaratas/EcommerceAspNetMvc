@@ -91,15 +91,15 @@
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
     <Content Include="wwwroot\Cart.html" />
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\font-awesome.css" />
-    <Content Include="Content\font-awesome.min.css" />
-    <Content Include="Content\Site.css" />
-    <Content Include="wwwroot\fonts\fontawesome-webfont.svg" />
-    <Content Include="wwwroot\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="assets\Content\bootstrap-theme.css" />
+    <Content Include="assets\Content\bootstrap-theme.min.css" />
+    <Content Include="assets\Content\bootstrap.css" />
+    <Content Include="assets\Content\bootstrap.min.css" />
+    <Content Include="assets\Content\font-awesome.css" />
+    <Content Include="assets\Content\font-awesome.min.css" />
+    <Content Include="assets\Content\Site.css" />
+    <Content Include="assets\fonts\fontawesome-webfont.svg" />
+    <Content Include="assets\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="wwwroot\ForgotPassword.html" />
     <Content Include="wwwroot\index.html" />
     <Content Include="wwwroot\Login.html" />
@@ -108,14 +108,14 @@
     <Content Include="wwwroot\MyProfile.html" />
     <Content Include="wwwroot\Product.html" />
     <Content Include="wwwroot\Register.html" />
-    <Content Include="wwwroot\Scripts\bootstrap.js" />
-    <Content Include="wwwroot\Scripts\bootstrap.min.js" />
+    <Content Include="assets\Scripts\bootstrap.js" />
+    <Content Include="assets\Scripts\bootstrap.min.js" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\i\Index.cshtml" />
-    <None Include="wwwroot\Scripts\jquery-1.9.1.intellisense.js" />
-    <Content Include="wwwroot\Scripts\jquery-1.9.1.js" />
-    <Content Include="wwwroot\Scripts\jquery-1.9.1.min.js" />
+    <None Include="assets\Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="assets\Scripts\jquery-1.9.1.js" />
+    <Content Include="assets\Scripts\jquery-1.9.1.min.js" />
     <Content Include="wwwroot\template.html" />
   </ItemGroup>
   <ItemGroup>
@@ -135,20 +135,20 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-    <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="wwwroot\fonts\fontawesome-webfont.eot" />
-    <Content Include="wwwroot\fonts\fontawesome-webfont.ttf" />
-    <Content Include="wwwroot\fonts\fontawesome-webfont.woff" />
-    <Content Include="wwwroot\fonts\fontawesome-webfont.woff2" />
-    <Content Include="wwwroot\fonts\FontAwesome.otf" />
-    <Content Include="wwwroot\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="wwwroot\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="wwwroot\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="wwwroot\fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="wwwroot\Scripts\jquery-1.9.1.min.map" />
+    <Content Include="assets\Content\bootstrap-theme.css.map" />
+    <Content Include="assets\Content\bootstrap-theme.min.css.map" />
+    <Content Include="assets\Content\bootstrap.css.map" />
+    <Content Include="assets\Content\bootstrap.min.css.map" />
+    <Content Include="assets\fonts\fontawesome-webfont.eot" />
+    <Content Include="assets\fonts\fontawesome-webfont.ttf" />
+    <Content Include="assets\fonts\fontawesome-webfont.woff" />
+    <Content Include="assets\fonts\fontawesome-webfont.woff2" />
+    <Content Include="assets\fonts\FontAwesome.otf" />
+    <Content Include="assets\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="assets\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="assets\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="assets\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="assets\Scripts\jquery-1.9.1.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

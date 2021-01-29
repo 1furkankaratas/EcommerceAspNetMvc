@@ -1,39 +1,96 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <title></title>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <link href="~/assets/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/assets//Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
+    <link href="~/assets/Content/site.css" rel="stylesheet" />
+    <script src="~/assets/Scripts/jquery-1.9.1.min.js"></script>
+    <script src="~/assets/Scripts/bootstrap.min.js"></script>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menulist" aria-expanded="false">
+                    <span class="sr-only">Menü</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "i", new { area = "" }, new { @class = "navbar-brand" })
+                <a class="navbar-brand" href="@Url.Action("Index","i")">Anasayfa</a>
             </div>
-            <div class="navbar-collapse collapse">
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="menulist">
                 <ul class="nav navbar-nav">
+                    <li><a href="#">Link 1</a></li>
+                    <li><a href="#">Link 2</a></li>
+                    <li><a href="#">Link 3</a></li>
                 </ul>
-            </div>
-        </div>
-    </div>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="../../wwwroot/Register.html">
+                            <span class="glyphicon glyphicon-user"></span>&nbsp;Kayıt Ol
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../wwwroot/Login.html">
+                            <span class="glyphicon glyphicon-log-in"></span>&nbsp;Giriş
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../wwwroot/profile.html">
+                            <span class="glyphicon glyphicon-user"></span>&nbsp;Kullanıcı Adı
+                        </a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#"
+                           class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;Sepetim
+                            <span class="badge">3</span>
+                            <span class="caret"></span>
+                        </a>
 
-    <div class="container body-content">
+                        <ul class="dropdown-menu">
+                            <li><a href="../../wwwroot/Product.html">Ürün 1</a></li>
+                            <li><a href="../../wwwroot/Product.html">Ürün 2</a></li>
+                            <li><a href="../../wwwroot/Product.html">Ürün 3</a></li>
+                            <li class="divider" role="separator"></li>
+                            <li><a href="../../wwwroot/Cart.html">Sepete Git</a></li>
+                        </ul>
+
+                    </li>
+                    <li class="dropdown">
+                        <a href="#"
+                           class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <span class="glyphicon glyphicon-envelope"></span>&nbsp;Mesajlar
+                            <span class="badge">2</span>
+                            <span class="caret"></span>
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li><a href="../../wwwroot/Message.html">Mesaj 1</a></li>
+                            <li><a href="../../wwwroot/Message.html">Mesaj 2</a></li>
+                            <li class="divider" role="separator"></li>
+                            <li><a href="../../wwwroot/Messages.html">Mesajlara Git</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="../../wwwroot/signout.html">
+                            <span class="glyphicon glyphicon-log-out"></span>&nbsp;Çıkış
+                        </a>
+                    </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+
+    <div class="col-md-12">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
     </div>
-
-    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
 </body>
 </html>
