@@ -9,5 +9,7 @@ namespace EcommerceAspNetMvc.Models
     public class HomeViewModel
     {
         public List<Products> Products { get; set; }
+
+        public Categories Category { get; set; }
     }
 }

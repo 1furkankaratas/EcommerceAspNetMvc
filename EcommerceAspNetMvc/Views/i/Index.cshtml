@@ -1,8 +1,31 @@
-﻿@model EcommerceAspNetMvc.Models.HomeViewModel
+﻿@using EcommerceAspNetMvc.DB
+@model EcommerceAspNetMvc.Models.HomeViewModel
 @{
     ViewBag.Title = "Anasayfa";
+    var cate = (List<Categories>)TempData["cat"];
 }
 
+<div class="row">
+    <div class="col-md-12">
+        <ol class="breadcrumb">
+            <li><a href="~/">Ana Sayfa</a></li>
+            @for (int i = cate.Count - 1; i >= 0; i--)
+            {
+                if (i == 0)
+                {
+                    <li class="active">@cate[i].Name</li>
+                }
+                else
+                {
+                    <li><a href="@Url.Action("Index","i",new {id=cate[i].Id})">@cate[i].Name</a></li>
+                }
+
+            }
+
+
+        </ol>
+    </div>
+</div>
 
 <div class="row">
     @foreach (var i in Model.Products)
