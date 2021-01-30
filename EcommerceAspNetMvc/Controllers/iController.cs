@@ -8,25 +8,19 @@ using EcommerceAspNetMvc.Models;
 
 namespace EcommerceAspNetMvc.Controllers
 {
-    public class iController : Controller
+    public class iController : BaseController
     {
-        EcommerceDbEntities _context;
-
-        public iController()
-        {
-            _context = new EcommerceDbEntities();
-            ViewBag.MenuCategories = _context.Categories.Where(x=>x.Parent_Id==null).ToList();
-        }
+        
 
         public ActionResult Index(int? id)
         {
-            IQueryable<Products> product = _context.Products;
+            IQueryable<Products> product = Context.Products;
             Categories category = null;
 
             if (id.HasValue)
             {
                 product = product.Where(x => x.Category_Id == id);
-                category = _context.Categories?.FirstOrDefault(x => x.Id == id);
+                category = Context.Categories?.FirstOrDefault(x => x.Id == id);
             }
 
 

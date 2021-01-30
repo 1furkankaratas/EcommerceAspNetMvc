@@ -1,0 +1,43 @@
+﻿@model EcommerceAspNetMvc.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Login";
+}
+
+<div class="row">
+    <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+
+
+        @using (Html.BeginForm())
+        {
+
+            <div class="panel panel-default">
+                <div class="panel-heading text-center">
+                    <h2>Giriş</h2>
+                    <small>Lütfen gerekli alanları doldurunuz</small>
+                </div>
+                <div class="panel-body">
+
+                    <div class="form-group">
+                        @Html.TextBoxFor(model=>model.Member.Email,new {@class="form-control",placeholder="email adresi",type="email"})
+                    </div>
+
+                    <div class="form-group">
+                        @Html.TextBoxFor(model => model.Member.Password, new { @class = "form-control", placeholder = "şifre", type = "password" })
+                    </div>
+
+                </div>
+                <div class="panel-footer text-right">
+                    <a href="@Url.Action("Register","Account")" class="btn btn-info">
+                        <span class="glyphicon glyphicon-floppy-saved"></span> Register
+                    </a>
+                    <button type="submit" class="btn btn-success">
+                        <span class="glyphicon glyphicon-log-in"></span> Login
+                    </button>
+
+                </div>
+            </div>
+        }
+
+
+    </div>
+</div>
