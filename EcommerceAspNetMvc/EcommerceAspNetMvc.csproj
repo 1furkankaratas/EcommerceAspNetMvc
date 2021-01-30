@@ -131,6 +131,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\i\Index.cshtml" />
+    <Content Include="App_Code\_MenuHelper.cshtml" />
     <None Include="Assets\Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Assets\Scripts\jquery-1.9.1.js" />
     <Content Include="Assets\Scripts\jquery-1.9.1.min.js" />
@@ -205,6 +206,7 @@
     </Content>
     <None Include="packages.config" />
     <Content Include="Views\Shared\_ProductItem.cshtml" />
+    <Content Include="Views\Shared\_MenuCategories.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

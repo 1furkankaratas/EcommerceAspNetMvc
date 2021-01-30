@@ -15,6 +15,7 @@ namespace EcommerceAspNetMvc.Controllers
         public iController()
         {
             _context = new EcommerceDbEntities();
+            ViewBag.MenuCategories = _context.Categories.Where(x=>x.Parent_Id==null).ToList();
         }
 
         public ActionResult Index(int? id)

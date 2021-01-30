@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using EcommerceAspNetMvc.DB
+<!DOCTYPE html>
 <html>
 <head>
     <title>@ViewBag.Title</title>
@@ -9,6 +10,7 @@
     <link href="~/assets/Content/site.css" rel="stylesheet" />
     <script src="~/assets/Scripts/jquery-1.9.1.min.js"></script>
     <script src="~/assets/Scripts/bootstrap.min.js"></script>
+    <script src="~/assets/Scripts/site.js"></script>
 </head>
 <body>
     <nav class="navbar navbar-default">
@@ -26,11 +28,8 @@
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="menulist">
-                <ul class="nav navbar-nav">
-                    <li><a href="#">Link 1</a></li>
-                    <li><a href="#">Link 2</a></li>
-                    <li><a href="#">Link 3</a></li>
-                </ul>
+                @Html.Partial("_MenuCategories", (List<Categories>)ViewBag.MenuCategories)
+                
                 <ul class="nav navbar-nav navbar-right">
                     <li>
                         <a href="#">
