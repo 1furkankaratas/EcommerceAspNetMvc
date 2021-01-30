@@ -10,7 +10,7 @@ namespace EcommerceAspNetMvc.Controllers
 {
     public class iController : BaseController
     {
-        
+
 
         public ActionResult Index(int? id)
         {
@@ -44,6 +44,30 @@ namespace EcommerceAspNetMvc.Controllers
 
             TempData["cat"] = categories;
             return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult Product(int id)
+        {
+            var product = Context.Products.FirstOrDefault(x => x.Id == id);
+            if (product==null)
+            {
+                return RedirectToAction("Index", "i");
+            }
+            ProductViewModel model = new ProductViewModel()
+            {
+                Product = product,
+                Comments = product.Comments.ToList()
+            };
+            return View(model);
+        }
+
+
+        [HttpPost]
+        public ActionResult Product(ProductViewModel model)
+        {
+            
+            return RedirectToAction("Product","i");
         }
     }
 }

@@ -1,0 +1,10 @@
+﻿@model EcommerceAspNetMvc.Models.ProductViewModel
+
+@{
+    ViewBag.Title = Model.Product.Name;
+}
+
+@Html.Partial("_Product", Model.Product)
+@Html.Partial("_AddCart", Model.Product)
+@Html.Partial("_Comment", Model.Comments)
+

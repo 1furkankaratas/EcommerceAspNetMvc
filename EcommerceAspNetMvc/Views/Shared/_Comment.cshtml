@@ -1,0 +1,59 @@
+﻿@model List<EcommerceAspNetMvc.DB.Comments>
+
+<div class="row">
+    <div class="col-md-8 col-md-push-4">
+
+        <div class="form-group">
+            <h3>Comments</h3>
+            <hr />
+        </div>
+
+        <div class="form-group">
+            <ul class="media-list">
+                @if (Model.Count == 0)
+                {
+                    <li class="text-danger">Hiç Yorum Yok</li>
+                }
+                else
+                {
+                    foreach (var comment in Model.OrderBy(x=>x.AddedDate))
+                    {
+                        <li class="media">
+                            <div class="media-left">
+                                <a href="#">
+                                    <img class="media-object img-circle img-thumbnail" width="64" src="@(comment.Members.ProfileImageName.IsEmpty() ? "http://placehold.it/64x64" : "/wwwroot/"+comment.Members.ProfileImageName )">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">@comment.Members.Name <i><small style="font-size: 10px">@comment.AddedDate.ToShortDateString()</small></i></h4>
+                                @comment.Text
+                            </div>
+                        </li>
+                        var a = comment.Product_Id;
+                    }
+                }
+            </ul>
+        </div>
+
+        @if (Session["logonuser"] != null)
+        {
+            using (Html.BeginForm("product","i",FormMethod.Post))
+            {
+                <div class="form-group">
+                    <textarea cols="30" rows="3" id="comment" name="comment" class="form-control" placeholder="Enter your comments" maxlength="255"></textarea>
+                </div>
+
+                <div class="form-group text-right">
+                    <button type="submit" class="btn btn-success">
+                        <span class="glyphicon glyphicon-send"></span> Send
+                    </button>
+                </div>
+            }
+        }
+        else
+        {
+            
+            <div class="alert alert-link">Yorum yapmak için <a href="~/account/login"><b>giriş</b></a> yapınız</div>
+        }
+    </div>
+</div>

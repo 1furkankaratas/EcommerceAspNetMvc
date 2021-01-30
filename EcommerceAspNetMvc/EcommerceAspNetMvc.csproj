@@ -108,6 +108,7 @@
     </Content>
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
+    <Content Include="wwwroot\1.jpg" />
     <Content Include="wwwroot\Cart.html" />
     <Content Include="Assets\Content\bootstrap-theme.css" />
     <Content Include="Assets\Content\bootstrap-theme.min.css" />
@@ -195,6 +196,7 @@
     </Compile>
     <Compile Include="Models\Enums.cs" />
     <Compile Include="Models\HomeViewModel.cs" />
+    <Compile Include="Models\ProductViewModel.cs" />
     <Compile Include="Models\RegisterViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -212,6 +214,10 @@
     <Content Include="Views\Shared\_MenuCategories.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\i\Product.cshtml" />
+    <Content Include="Views\Shared\_Product.cshtml" />
+    <Content Include="Views\Shared\_AddCart.cshtml" />
+    <Content Include="Views\Shared\_Comment.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
