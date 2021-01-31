@@ -15,5 +15,15 @@ namespace EcommerceAspNetMvc.Controllers
             Context = new EcommerceDbEntities();
             ViewBag.MenuCategories = Context.Categories.Where(x => x.Parent_Id == null).ToList();
         }
+
+        protected Members CurrentUser()
+        {
+            return (Members) Session["logonuser"];
+        }
+
+        protected int CurrentUserId()
+        {
+            return ((Members)Session["logonuser"]).Id;
+        }
     }
 }

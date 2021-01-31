@@ -11,5 +11,7 @@ namespace EcommerceAspNetMvc.Models
         public Products Product { get; set; }
 
         public List<Comments> Comments { get; set; }
+
+        public Comments Comment { get; set; }
     }
 }

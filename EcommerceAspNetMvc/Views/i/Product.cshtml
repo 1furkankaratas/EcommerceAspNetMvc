@@ -6,5 +6,57 @@
 
 @Html.Partial("_Product", Model.Product)
 @Html.Partial("_AddCart", Model.Product)
-@Html.Partial("_Comment", Model.Comments)
+
+<div class="row">
+    <div class="col-md-8 col-md-push-4">
+
+        <div class="form-group">
+            <h3>Comments</h3>
+            <hr />
+        </div>
+
+        <div class="form-group">
+            <ul class="media-list">
+
+                @if (Model.Comments.Count == 0)
+                {
+                    <li class="text-danger">Hiç Yorum Yok</li>
+                }
+                else
+                {
+                    foreach (var com in Model.Comments.OrderByDescending(x => x.AddedDate))
+                    {
+                        @Html.Partial("_Comment", com)
+                    }
+                }
+
+            </ul>
+        </div>
+
+        @if (Session["logonuser"] != null)
+        {
+            using (Html.BeginForm("product", "i", FormMethod.Post))
+            {
+                @Html.HiddenFor(x => x.Product.Id)
+
+                <div class="form-group">
+                    @Html.TextAreaFor(model => model.Comment.Text, new { @class = "form-control", placeholder = "Enter your comments", maxlength = "255", cols = "30", rows = "3" })
+                </div>
+
+                <div class="form-group text-right">
+                    <button type="submit" class="btn btn-success">
+                        <span class="glyphicon glyphicon-send"></span> Send
+                    </button>
+                </div>
+            }
+        }
+        else
+        {
+
+            <div class="alert alert-link">Yorum yapmak için <a href="~/account/login"><b>giriş</b></a> yapınız</div>
+        }
+    </div>
+</div>
+
+
 

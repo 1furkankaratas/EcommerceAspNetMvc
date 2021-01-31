@@ -50,7 +50,7 @@ namespace EcommerceAspNetMvc.Controllers
         public ActionResult Product(int id)
         {
             var product = Context.Products.FirstOrDefault(x => x.Id == id);
-            if (product==null)
+            if (product == null)
             {
                 return RedirectToAction("Index", "i");
             }
@@ -66,8 +66,25 @@ namespace EcommerceAspNetMvc.Controllers
         [HttpPost]
         public ActionResult Product(ProductViewModel model)
         {
-            
-            return RedirectToAction("Product","i");
+            try
+            {
+                Comments com = new Comments
+                {
+                    Product_Id = model.Product.Id,
+                    Text = model.Comment.Text,
+                    AddedDate = DateTime.Now,
+                    ModifiedDate = DateTime.Now,
+                    Member_Id = CurrentUserId()
+                };
+                Context.Comments.Add(com);
+                Context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                ViewBag.info = "Yorum eklenirken bir hata meydana geldi" + " -> " + e.Message;
+
+            }
+            return RedirectToAction("Product", "i");
         }
     }
 }
