@@ -50,8 +50,30 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Extensions.Primitives, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Primitives.5.0.0\lib\net461\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Pipelines, Version=5.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Pipelines.5.0.1\lib\net461\System.IO.Pipelines.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -108,8 +130,6 @@
     </Content>
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
-    <Content Include="wwwroot\1.jpg" />
-    <Content Include="wwwroot\Cart.html" />
     <Content Include="Assets\Content\bootstrap-theme.css" />
     <Content Include="Assets\Content\bootstrap-theme.min.css" />
     <Content Include="Assets\Content\bootstrap.css" />
@@ -119,6 +139,14 @@
     <Content Include="Assets\Content\Site.css" />
     <Content Include="Assets\fonts\fontawesome-webfont.svg" />
     <Content Include="Assets\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Assets\Scripts\bootstrap.js" />
+    <Content Include="Assets\Scripts\bootstrap.min.js" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\i\Index.cshtml" />
+    <Content Include="App_Code\_MenuHelper.cshtml" />
+    <Content Include="wwwroot\1.jpg" />
+    <Content Include="wwwroot\Cart.html" />
     <Content Include="wwwroot\ForgotPassword.html" />
     <Content Include="wwwroot\index.html" />
     <Content Include="wwwroot\Login.html" />
@@ -127,16 +155,10 @@
     <Content Include="wwwroot\MyProfile.html" />
     <Content Include="wwwroot\Product.html" />
     <Content Include="wwwroot\Register.html" />
-    <Content Include="Assets\Scripts\bootstrap.js" />
-    <Content Include="Assets\Scripts\bootstrap.min.js" />
-    <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\i\Index.cshtml" />
-    <Content Include="App_Code\_MenuHelper.cshtml" />
+    <Content Include="wwwroot\template.html" />
     <None Include="Assets\Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Assets\Scripts\jquery-1.9.1.js" />
     <Content Include="Assets\Scripts\jquery-1.9.1.min.js" />
-    <Content Include="wwwroot\template.html" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -197,6 +219,7 @@
     <Compile Include="Models\Enums.cs" />
     <Compile Include="Models\HomeViewModel.cs" />
     <Compile Include="Models\ProductViewModel.cs" />
+    <Compile Include="Models\ProfilViewModel.cs" />
     <Compile Include="Models\RegisterViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -218,6 +241,8 @@
     <Content Include="Views\Shared\_Product.cshtml" />
     <Content Include="Views\Shared\_AddCart.cshtml" />
     <Content Include="Views\Shared\_Comment.cshtml" />
+    <Content Include="Views\Account\Profil.cshtml" />
+    <Content Include="Views\Account\ProfilEdit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -241,6 +266,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="wwwroot\img\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

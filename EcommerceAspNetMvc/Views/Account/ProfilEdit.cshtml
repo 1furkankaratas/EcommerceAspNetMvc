@@ -1,0 +1,57 @@
+﻿@model EcommerceAspNetMvc.Models.ProfilViewModel
+@{
+    ViewBag.Title = "ProfilEdit";
+}
+
+
+<div class="row">
+    <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+
+
+        @using (Html.BeginForm("Profiledit","Account",FormMethod.Post,new {enctype= "multipart/form-data" }))
+        {
+
+            <div class="panel panel-default">
+                <div class="panel-heading text-center">
+                    <h2>Düzenle</h2>
+                    <small>Lütfen gerekli alanları doldurunuz</small>
+                </div>
+                <div class="panel-body">
+
+                    <div class="form-group">
+                        @Html.TextBoxFor(model => model.Member.Name, new { @class = "form-control", placeholder = "name", type = "text" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.TextBoxFor(model => model.Member.Surname, new { @class = "form-control", placeholder = "surname", type = "text" })
+                    </div>
+
+
+                    <div class="form-group">
+                        @Html.TextAreaFor(model => model.Member.Bio, new { @class = "form-control", placeholder = "bio" })
+                    </div>
+
+
+                    <div class="form-group">
+                        @Html.TextBoxFor(model => model.Member.Password, new { @class = "form-control", placeholder = "şifre", type = "password" })
+                    </div>
+
+                    <div class="form-group">
+                        <input class="form-control" type="file" name="img"/>
+                    </div>
+
+
+                </div>
+                <div class="panel-footer text-right">
+                    <button type="submit" class="btn btn-success">
+                        <span class="glyphicon glyphicon-log-in"></span> Save
+                    </button>
+
+                </div>
+            </div>
+        }
+
+
+    </div>
+</div>
+
