@@ -216,6 +216,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\BasketViewModel.cs" />
+    <Compile Include="Models\BasketModel.cs" />
     <Compile Include="Models\Enums.cs" />
     <Compile Include="Models\HomeViewModel.cs" />
     <Compile Include="Models\ProductViewModel.cs" />
@@ -243,6 +245,7 @@
     <Content Include="Views\Shared\_Comment.cshtml" />
     <Content Include="Views\Account\Profil.cshtml" />
     <Content Include="Views\Account\ProfilEdit.cshtml" />
+    <Content Include="Views\i\Basket.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

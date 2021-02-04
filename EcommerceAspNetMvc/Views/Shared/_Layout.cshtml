@@ -1,4 +1,5 @@
 ﻿@using EcommerceAspNetMvc.DB
+@using EcommerceAspNetMvc.Models
 @{
     var user = (Members)Session["logonuser"];
 }
@@ -16,97 +17,116 @@
     <script src="~/assets/Scripts/site.js"></script>
 </head>
 <body>
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menulist" aria-expanded="false">
-                <span class="sr-only">Menü</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="~/">Anasayfa</a>
-        </div>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menulist" aria-expanded="false">
+                    <span class="sr-only">Menü</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="~/">Anasayfa</a>
+            </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="menulist">
-            @Html.Partial("_MenuCategories", (List<Categories>)ViewBag.MenuCategories)
-                
-            <ul class="nav navbar-nav navbar-right">
-                @if (user == null)
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="menulist">
+                @Html.Partial("_MenuCategories", (List<Categories>)ViewBag.MenuCategories)
+
+                <ul class="nav navbar-nav navbar-right">
+                    @{
+                        List<BasketViewModel> basket = (List<BasketViewModel>)Session["Basket"];
+
+                        if (basket != null && basket.Count>0)
+                        {
+
+                            <li class="dropdown">
+                                <a href="#"
+                                   class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;Sepetim
+                                    <span class="badge">@basket.Count</span>
+                                    <span class="caret"></span>
+                                </a>
+
+                                <ul class="dropdown-menu">
+
+                                    @foreach (var item in basket)
+                                    {
+                                        <li><a href="@Url.Action("Product","i",new {id=item.Product.Id})">@item.Product.Name (@item.Count)</a></li>
+                                    }
+                                    <li class="divider" role="separator"></li>
+                                    <li><a href="@Url.Action("Basket","i")">Sepete Git</a></li>
+                                </ul>
+
+                            </li>
+                        }
+                    }
+
+                    @if (user == null)
+                    {
+                        <li>
+                            <a href="@Url.Action("register", "Account")">
+                                <span class="glyphicon glyphicon-user"></span>&nbsp;Kayıt Ol
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("login", "Account")">
+                                <span class="glyphicon glyphicon-log-in"></span>&nbsp;Giriş
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            <a href="@Url.Action("Profil", "Account")">
+                                <span class="glyphicon glyphicon-user"></span> @($"{user.Name} {user.Surname}")
+                            </a>
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="#"
+                               class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                <span class="glyphicon glyphicon-envelope"></span>&nbsp;Mesajlar
+                                <span class="badge">2</span>
+                                <span class="caret"></span>
+                            </a>
+
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Mesaj 1</a></li>
+                                <li><a href="#">Mesaj 2</a></li>
+                                <li class="divider" role="separator"></li>
+                                <li><a href="#">Mesajlara Git</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("logout", "Account")">
+                                <span class="glyphicon glyphicon-log-out"></span>&nbsp;Çıkış
+                            </a>
+                        </li>
+                    }
+
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+
+    @if (ViewBag.info != null || TempData["info"] != null)
+    {
+        <div class="container-fluid">
+            <div class="alert alert-info alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                @if (ViewBag.info == null)
                 {
-                    <li>
-                        <a href="@Url.Action("register","Account")">
-                            <span class="glyphicon glyphicon-user"></span>&nbsp;Kayıt Ol
-                        </a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("login","Account")">
-                            <span class="glyphicon glyphicon-log-in"></span>&nbsp;Giriş
-                        </a>
-                    </li>
+                    @TempData["info"]
                 }
                 else
                 {
-                    <li>
-                        <a href="@Url.Action("Profil","Account")">
-                            <span class="glyphicon glyphicon-user"></span> @($"{user.Name} {user.Surname}")
-                        </a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#"
-                           class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            <span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;Sepetim
-                            <span class="badge">3</span>
-                            <span class="caret"></span>
-                        </a>
-
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Ürün 1</a></li>
-                            <li><a href="#">Ürün 2</a></li>
-                            <li><a href="#">Ürün 3</a></li>
-                            <li class="divider" role="separator"></li>
-                            <li><a href="#">Sepete Git</a></li>
-                        </ul>
-
-                    </li>
-                    <li class="dropdown">
-                        <a href="#"
-                           class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            <span class="glyphicon glyphicon-envelope"></span>&nbsp;Mesajlar
-                            <span class="badge">2</span>
-                            <span class="caret"></span>
-                        </a>
-
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Mesaj 1</a></li>
-                            <li><a href="#">Mesaj 2</a></li>
-                            <li class="divider" role="separator"></li>
-                            <li><a href="#">Mesajlara Git</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("logout","Account")">
-                            <span class="glyphicon glyphicon-log-out"></span>&nbsp;Çıkış
-                        </a>
-                    </li>
+                    @ViewBag.info
                 }
-                
-            </ul>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-</nav>
-
-@if (ViewBag.info != null)
-{
-    <div class="container-fluid">
-        <div class="alert alert-info alert-dismissible" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            @ViewBag.info
+            </div>
         </div>
-    </div>
-}
+    }
     <div class="container">
         @RenderBody()
     </div>

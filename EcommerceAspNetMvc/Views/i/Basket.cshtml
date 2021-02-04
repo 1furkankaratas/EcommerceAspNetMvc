@@ -1,0 +1,87 @@
+﻿@using EcommerceAspNetMvc.Models
+@model List<BasketViewModel>
+@{
+    ViewBag.Title = "Sepet";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h3>Sepetiniz</h3>
+        <hr />
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+
+        <table class="table table-condensed table-striped table-hover text-center">
+
+            <thead>
+                <tr>
+                    <th class="text-center">Product Name</th>
+                    <th class="text-center">Price</th>
+                    <th class="text-center">Quantity</th>
+                    <th class="text-center">Tutar</th>
+                    <th class="text-center"></th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                @foreach (BasketViewModel item in Model)
+                {
+                    <tr>
+                        <td>@item.Product.Name</td>
+                        <td>@item.Product.Price ₺</td>
+                        <td>@item.Count</td>
+                        <td style="color: yellowgreen;">@(item.Count*item.Product.Price) ₺</td>
+                        <td>
+                            <a href="@Url.Action("AddBasket","i",new {id=item.Product.Id})" class="btn btn-warning btn-xs">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </a>
+                            <a href="@Url.Action("AddBasket","i",new {id=item.Product.Id,remove=true})" class="btn btn-info btn-xs">
+                                <span class="glyphicon glyphicon-minus"></span>
+                            </a>
+                            &nbsp;|&nbsp;
+                            <a href="@Url.Action("Product","i",new{id=item.Product.Id})" class="btn btn-info btn-xs">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                            </a>
+                            <a href="@Url.Action("RemoveBasket","i",new {id=item.Product.Id})" class="btn btn-danger btn-xs">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+            <tfoot>
+                <tr>
+                    <td>
+                        &nbsp;
+                    </td>
+                    <td>
+                        &nbsp;
+                    </td>
+                    <td>
+                        &nbsp;
+                    </td>
+                    <td class="text-center text-danger">
+                        <h2>@ViewBag.totalPrice ₺</h2> <span></span>
+                    </td>
+                    <td colspan="2" class="text-center">
+                        <br />
+                        <a href="@Url.Action("RemoveBasket","i")" class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-trash"></span> Sepeti Boşalt
+                        </a>
+                        <a href="#" class="btn btn-success btn-sm">
+                            <span class="glyphicon glyphicon-send"></span> Satın Al
+                        </a>
+                    </td>
+                </tr>
+            </tfoot>
+
+        </table>
+
+    </div>
+</div>
+

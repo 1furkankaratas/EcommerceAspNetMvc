@@ -1,10 +1,9 @@
-﻿using System;
+﻿using EcommerceAspNetMvc.DB;
+using EcommerceAspNetMvc.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using EcommerceAspNetMvc.DB;
-using EcommerceAspNetMvc.Models;
 
 namespace EcommerceAspNetMvc.Controllers
 {
@@ -86,5 +85,110 @@ namespace EcommerceAspNetMvc.Controllers
             }
             return RedirectToAction("Product", "i");
         }
+
+        [HttpGet]
+        public ActionResult AddBasket(int id, bool remove = false)
+        {
+            List<BasketViewModel> basket = null;
+            if (Session["Basket"] == null)
+            {
+                basket = new List<BasketViewModel>();
+            }
+            else
+            {
+                basket = (List<BasketViewModel>)Session["Basket"];
+            }
+
+            if (basket.Any(x => x.Product.Id == id))
+            {
+                var pro = basket.FirstOrDefault(x => x.Product.Id == id);
+                if (pro != null)
+                {
+                    if (remove && pro.Count > 0)
+                    {
+                        pro.Count -= 1;
+                        
+                    }
+                    else
+                    {
+                        if (pro.Product.UnitsInStock > pro.Count)
+                        {
+                            pro.Count += 1;
+                        }
+                        else
+                        {
+                            TempData["info"] = "Daha fazla ürün eklenemez";
+                        }
+                    }
+                }
+
+            }
+            else
+            {
+                var pro = Context.Products.FirstOrDefault(x => x.Id == id);
+                if (pro != null && pro.IsContinued && pro.UnitsInStock>0)
+                {
+                    basket.Add(new BasketViewModel()
+                    {
+                        Count = 1,
+                        Product = pro
+                    });
+                }
+                else if (pro != null && !pro.IsContinued)
+                {
+                    TempData["info"] = "Bu ürünün satışı duruduruldu.";
+                }
+
+            }
+
+            basket.RemoveAll(x => x.Count < 1);
+            Session["Basket"] = basket;
+
+            return RedirectToAction("Basket", "i");
+        }
+
+
+        [HttpGet]
+        public ActionResult Basket()
+        {
+
+            List<BasketViewModel> model = (List<BasketViewModel>)Session["Basket"];
+
+            if (model == null)
+            {
+                model = new List<BasketViewModel>();
+            }
+
+
+
+            ViewBag.totalPrice = model.Select(x => x.Product.Price * x.Count).Sum();
+
+            return View(model);
+        }
+
+
+        [HttpGet]
+        public ActionResult RemoveBasket(int id=0)
+        {
+            List<BasketViewModel> basket = (List<BasketViewModel>)Session["Basket"];
+            
+            if (basket!=null)
+            {
+                if (id>0)
+                {
+                    basket.RemoveAll(x => x.Product.Id == id);
+                    
+                }
+                else if(id==0)
+                {
+                    basket.Clear();
+                }
+                Session["Basket"] = basket;
+            }
+
+            return RedirectToAction("Basket", "i");
+
+        }
+
     }
 }
