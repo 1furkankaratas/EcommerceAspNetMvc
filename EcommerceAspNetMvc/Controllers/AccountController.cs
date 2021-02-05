@@ -98,7 +98,8 @@ namespace EcommerceAspNetMvc.Controllers
 
             ProfilViewModel model = new ProfilViewModel()
             {
-                Member = user
+                Member = user,
+                Addresses = Context.Addresses.Where(x=>x.Member_Id==user.Id).ToList()
             };
 
             return View(model);

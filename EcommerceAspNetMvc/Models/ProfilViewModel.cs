@@ -9,5 +9,7 @@ namespace EcommerceAspNetMvc.Models
     public class ProfilViewModel
     {
         public Members Member { get; set; }
+
+        public List<Addresses> Addresses { get; set; }
     }
 }

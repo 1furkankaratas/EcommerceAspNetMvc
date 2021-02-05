@@ -50,12 +50,48 @@
             <span class="glyphicon glyphicon-edit"></span> Edit
         </a>
 
+        <a href="@Url.Action("ProfilEdit","Account")" class="btn btn-info">
+            <span class="glyphicon glyphicon-plus"></span> Add Address
+        </a>
+
         <a href="#" class="btn btn-danger">
             <span class="glyphicon glyphicon-trash"></span> Delete
         </a>
     </div>
     <div class="col-md-12">
-        &nbsp;
+        <table class="table table-condensed table-striped table-hover text-center">
+
+            <thead>
+                <tr>
+                    <th class="text-center">Name</th>
+                    <th class="text-center">Address</th>
+                    <th class="text-center">Added Date</th>
+                    <th class="text-center"></th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                @foreach (var item in Model.Addresses)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>@item.AdresDescription</td>
+                        <td>@item.AddedDate.ToShortDateString()</td>
+                        <td>
+                            <a href="@Url.Action("Product","i",new{})" class="btn btn-info btn-xs">
+                                <span class="glyphicon glyphicon-edit"></span>
+                            </a>
+                            <a href="@Url.Action("RemoveBasket","i",new {})" class="btn btn-danger btn-xs">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            <tr></tr>
+            </tbody>
+
+        </table>
     </div>
 </div>
 

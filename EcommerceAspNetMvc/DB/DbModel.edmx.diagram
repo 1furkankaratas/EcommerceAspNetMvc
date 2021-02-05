@@ -5,7 +5,6 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="9bd516fc1d70415882a8d2a02ef054e6" Name="Diagram1">
-        <EntityTypeShape EntityType="EcommerceAspNetMvcDbModel.Addresses" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
         <EntityTypeShape EntityType="EcommerceAspNetMvcDbModel.Categories" Width="1.5" PointX="1.5" PointY="18.375" IsExpanded="true" />
         <EntityTypeShape EntityType="EcommerceAspNetMvcDbModel.Comments" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
         <EntityTypeShape EntityType="EcommerceAspNetMvcDbModel.Members" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
@@ -15,7 +14,6 @@
         <EntityTypeShape EntityType="EcommerceAspNetMvcDbModel.Orders" Width="1.5" PointX="3" PointY="14.375" IsExpanded="true" />
         <EntityTypeShape EntityType="EcommerceAspNetMvcDbModel.Products" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
         <EntityTypeShape EntityType="EcommerceAspNetMvcDbModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <AssociationConnector Association="EcommerceAspNetMvcDbModel.FK_Addresses_Members" ManuallyRouted="false" />
         <AssociationConnector Association="EcommerceAspNetMvcDbModel.FK_Categories_Categories" ManuallyRouted="false" />
         <AssociationConnector Association="EcommerceAspNetMvcDbModel.FK_Products_Categories" ManuallyRouted="false" />
         <AssociationConnector Association="EcommerceAspNetMvcDbModel.FK_Comments_Members" ManuallyRouted="false" />
@@ -25,6 +23,8 @@
         <AssociationConnector Association="EcommerceAspNetMvcDbModel.FK_MessageReplies_Messages" ManuallyRouted="false" />
         <AssociationConnector Association="EcommerceAspNetMvcDbModel.FK_OrderDetails_Orders" ManuallyRouted="false" />
         <AssociationConnector Association="EcommerceAspNetMvcDbModel.FK_OrderDetails_Products" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="EcommerceAspNetMvcDbModel.Addresses" Width="1.5" PointX="3" PointY="4.5" />
+        <AssociationConnector Association="EcommerceAspNetMvcDbModel.FK_Addresses_Members" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

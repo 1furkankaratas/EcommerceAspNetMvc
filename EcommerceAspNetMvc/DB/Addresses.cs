@@ -18,7 +18,8 @@ namespace EcommerceAspNetMvc.DB
         public string AdresDescription { get; set; }
         public int Member_Id { get; set; }
         public System.DateTime AddedDate { get; set; }
-        public Nullable<System.DateTime> ModifiedDate { get; set; }
+        public System.DateTime ModifiedDate { get; set; }
+        public string Name { get; set; }
     
         public virtual Members Members { get; set; }
     }
