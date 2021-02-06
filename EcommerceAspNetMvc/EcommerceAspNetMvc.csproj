@@ -118,6 +118,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\buy.css" />
     <Content Include="DB\DbModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>DbModel.Context.cs</LastGenOutput>
@@ -218,6 +219,7 @@
     <Compile Include="Models\AddAddressViewModel.cs" />
     <Compile Include="Models\BasketViewModel.cs" />
     <Compile Include="Models\BasketModel.cs" />
+    <Compile Include="Models\BuyViewModel.cs" />
     <Compile Include="Models\Enums.cs" />
     <Compile Include="Models\HomeViewModel.cs" />
     <Compile Include="Models\ProductViewModel.cs" />
@@ -249,6 +251,8 @@
     <Content Include="Views\Home\Basket.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Product.cshtml" />
+    <Content Include="Views\Home\Buy.cshtml" />
+    <Content Include="Views\Account\ListOrder.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

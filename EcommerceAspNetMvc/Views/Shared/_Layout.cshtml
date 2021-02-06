@@ -14,7 +14,6 @@
     <link href="~/assets/Content/site.css" rel="stylesheet" />
     <script src="~/assets/Scripts/jquery-1.9.1.min.js"></script>
     <script src="~/assets/Scripts/bootstrap.min.js"></script>
-    <script src="~/assets/Scripts/site.js"></script>
 </head>
 <body>
     <nav class="navbar navbar-default">
@@ -38,7 +37,7 @@
                     @{
                         List<BasketViewModel> basket = (List<BasketViewModel>)Session["Basket"];
 
-                        if (basket != null && basket.Count>0)
+                        if (basket != null && basket.Count > 0)
                         {
 
                             <li class="dropdown">
@@ -78,10 +77,18 @@
                     }
                     else
                     {
-                        <li>
-                            <a href="@Url.Action("Profil", "Account")">
-                                <span class="glyphicon glyphicon-user"></span> @($"{user.Name} {user.Surname}")
+
+                        <li class="dropdown">
+                            <a href="#"
+                               class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                <span class="glyphicon glyphicon-user"></span>&nbsp;@($"{user.Name} {user.Surname}")
+                                <span class="caret"></span>
                             </a>
+
+                            <ul class="dropdown-menu">
+                                <li><a href="@Url.Action("Profil", "Account")">Profil</a></li>
+                                <li><a href="@Url.Action("ListOrder", "Account")">Siparişler</a></li>
+                            </ul>
                         </li>
 
                         <li class="dropdown">

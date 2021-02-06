@@ -190,5 +190,76 @@ namespace EcommerceAspNetMvc.Controllers
 
         }
 
+
+        [HttpGet]
+        public ActionResult Buy()
+        {
+
+            if (IsLogon())
+            {
+                BuyViewModel model = new BuyViewModel();
+                var user = CurrentUserId();
+                model.Addresseses = Context.Addresses.Where(x => x.Member_Id == user).ToList();
+                model.BasketView = ((List<BasketViewModel>)Session["Basket"]).ToList();
+                return View(model);
+            }
+
+            return RedirectToAction("Login","Account");
+        }
+
+        [HttpPost]
+        public ActionResult Buy(string address)
+        {
+            if (IsLogon())
+            {
+                try
+                {
+                    var basket= ((List<BasketViewModel>)Session["Basket"]).ToList();
+
+                    var _address = Context.Addresses.FirstOrDefault(x => x.Id.ToString() == address);
+
+                    var order = new Orders()
+                    {
+                        AddedDate = DateTime.Now,
+                        Address = _address.AdresDescription,
+                        Member_Id = CurrentUserId(),
+                        Id = Guid.NewGuid(),
+                        Status = "0"
+                    };
+                    foreach (var item in basket)
+                    {
+                        var oDetail = new OrderDetails();
+                        oDetail.AddedDate=DateTime.Now;
+                        oDetail.Price = item.Product.Price * item.Count;
+                        oDetail.Product_Id = item.Product.Id;
+                        oDetail.Quantity = item.Count;
+                        oDetail.Id = Guid.NewGuid();
+                        order.OrderDetails.Add(oDetail);
+                        Context.Orders.Add(order);
+
+                        var product = Context.Products.FirstOrDefault(x => x.Id == item.Product.Id);
+                        if (product!=null&&product.UnitsInStock>=item.Count)
+                        {
+                            product.UnitsInStock = product.UnitsInStock - item.Count;
+                        }
+                        else
+                        {
+                            throw new Exception(string.Format("'{0}' ürününe ait yeterli stok bulunamadı",item.Product.Name));
+                        }
+                    }
+
+                    Context.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    TempData["info"] = "Bir hata meydana geldi tekrar deneyiniz" + e;
+                }
+            }
+
+
+
+            return RedirectToAction("Index", "Home");
+        }
+
     }
 }

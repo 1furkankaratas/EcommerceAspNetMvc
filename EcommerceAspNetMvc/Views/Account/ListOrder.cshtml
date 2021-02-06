@@ -1,0 +1,16 @@
+﻿@model List<EcommerceAspNetMvc.DB.Orders>
+@{
+    ViewBag.Title = "ListOrder";
+}
+
+@foreach (var i in Model)
+{
+    <h3>Sipariş No: @i.Id</h3>
+    <br />
+
+    foreach (var a in i.OrderDetails)
+    {
+        <h4>---- @a.Products.Name</h4>
+    }
+    <hr/>
+}

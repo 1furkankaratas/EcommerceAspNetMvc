@@ -1,0 +1,79 @@
+﻿@model EcommerceAspNetMvc.Models.BuyViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Satın al</title>
+    <link href="~/Assets/buy.css" rel="stylesheet" />
+    <script src="~/Assets/Scripts/jquery-1.9.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Card Multi Select
+            $('input[type=radio]').click(function () {
+                if ($(this).parent().hasClass('active')) {
+                    $(this).parent().removeClass('active');
+                }
+                else { $(this).parent().addClass('active'); }
+            });
+        });
+    </script>
+</head>
+<body>
+    @using (Html.BeginForm()){
+        <div style="width: 95%;margin: 0 auto">
+            <div style="width: 80%;display: inline-block">
+                <h2 style="">Adres Seçiniz</h2>
+                <hr />  
+                <div class="cards">
+
+
+                    @foreach (var i in Model.Addresseses)
+                    {
+                        <div class="card">
+                            <input type="radio" value="@i.Id" name="address" />
+                            <h4>@i.Name</h4>
+                            <p>@i.AdresDescription</p>
+                        </div>
+                    }
+
+
+                </div>
+                <h2>Sepetindeki Ürünler</h2>
+                <hr />
+                <div class="cards">
+                    @foreach (var i in Model.BasketView)
+                    {
+                        <div class="card">
+                            <img width="100" src="/wwwroot/@i.Product.ProductImageName" alt="" />
+                            <h4>@i.Product.Name</h4>
+                            <p>Fiyat : @i.Product.Price</p>
+                            <p>Adet : @i.Count</p>
+                        </div>
+                    }
+                </div>
+                <h2>Ödeme Bilgileri</h2>
+                <hr />
+                <h2>Sözleşme ve formlar</h2>
+                <hr />
+            </div>
+
+
+
+
+            <div style="width: 20%; display: inline-block; position: absolute; top: 10px;">
+                <div style="width: 100%; height: 200px; ; padding: 5px; background-color: cadetblue;border: 1px solid rgba(0,0,222,04); border-radius: 10px;">
+                    <h5>Ödenecek tutar</h5>
+                    <span>108,05 TL</span><br />
+                    <button type="submit">Devam</button>
+                    <a href="@Url.Action("Basket","Home")">Sepete Geri Dön</a>
+                </div>
+            </div>
+        </div>
+    }
+</body>
+</html>

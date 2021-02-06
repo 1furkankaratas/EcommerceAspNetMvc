@@ -25,5 +25,13 @@ namespace EcommerceAspNetMvc.Controllers
         {
             return ((Members)Session["logonuser"]).Id;
         }
+
+        protected bool IsLogon()
+        {
+            if (Session["logonuser"] == null) 
+                return false;
+            else 
+                return true;
+        }
     }
 }

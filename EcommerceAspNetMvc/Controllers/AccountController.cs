@@ -1,6 +1,7 @@
 ﻿using EcommerceAspNetMvc.DB;
 using EcommerceAspNetMvc.Models;
 using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.IO;
 using System.Linq;
@@ -270,6 +271,22 @@ namespace EcommerceAspNetMvc.Controllers
             }
 
             return RedirectToAction("Profil", "Account");
+        }
+
+
+        [HttpGet]
+        public ActionResult ListOrder()
+        {
+
+            var user = CurrentUser();
+
+            var orders = new List<Orders>();
+            if (user!=null)
+            {
+                orders = Context.Orders.Where(x => x.Member_Id == user.Id).ToList();
+            }
+
+            return View(orders);
         }
 
     }
