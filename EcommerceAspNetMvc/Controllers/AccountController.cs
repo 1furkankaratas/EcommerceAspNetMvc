@@ -1,20 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using EcommerceAspNetMvc.DB;
+using EcommerceAspNetMvc.Models;
+using System;
 using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using EcommerceAspNetMvc.DB;
-using EcommerceAspNetMvc.Models;
 
 namespace EcommerceAspNetMvc.Controllers
 {
     [RoutePrefix("Account")]
     public class AccountController : BaseController
     {
-        private Addresses adress;
-
         [HttpGet]
         public ActionResult Register()
         {
@@ -67,7 +64,7 @@ namespace EcommerceAspNetMvc.Controllers
                 if (user != null)
                 {
                     Session["logonuser"] = user;
-                    return RedirectToAction("index", "i");
+                    return RedirectToAction("index", "Home");
                 }
                 else
                 {
@@ -95,7 +92,7 @@ namespace EcommerceAspNetMvc.Controllers
 
             if (user == null)
             {
-                return RedirectToAction("index", "i");
+                return RedirectToAction("index", "Home");
             }
 
             ProfilViewModel model = new ProfilViewModel()
@@ -114,7 +111,7 @@ namespace EcommerceAspNetMvc.Controllers
 
             if (user == null)
             {
-                return RedirectToAction("index", "i");
+                return RedirectToAction("index", "Home");
             }
 
             ProfilViewModel model = new ProfilViewModel()
@@ -135,7 +132,7 @@ namespace EcommerceAspNetMvc.Controllers
 
                 if (user == null)
                 {
-                    return RedirectToAction("index", "i");
+                    return RedirectToAction("index", "Home");
                 }
 
                 var cuser = Context.Members.FirstOrDefault(x => x.Id == user.Id);
@@ -256,11 +253,11 @@ namespace EcommerceAspNetMvc.Controllers
             {
                 var curAddress = Context.Addresses.FirstOrDefault(x => x.Id == model.Address.Id);
 
-                if (curAddress!=null)
+                if (curAddress != null)
                 {
                     curAddress.Name = model.Address.Name;
                     curAddress.AdresDescription = model.Address.AdresDescription;
-                    curAddress.ModifiedDate=DateTime.Now;
+                    curAddress.ModifiedDate = DateTime.Now;
 
                     Context.Entry(curAddress).State = EntityState.Modified;
                     Context.SaveChanges();

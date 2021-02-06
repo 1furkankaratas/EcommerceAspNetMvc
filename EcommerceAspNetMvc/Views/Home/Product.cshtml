@@ -35,7 +35,7 @@
 
         @if (Session["logonuser"] != null)
         {
-            using (Html.BeginForm("product", "i", FormMethod.Post))
+            using (Html.BeginForm("product", "Home", FormMethod.Post))
             {
                 @Html.HiddenFor(x => x.Product.Id)
 

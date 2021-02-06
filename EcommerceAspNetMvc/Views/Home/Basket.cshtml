@@ -36,17 +36,17 @@
                         <td>@item.Count</td>
                         <td style="color: yellowgreen;">@(item.Count*item.Product.Price) ₺</td>
                         <td>
-                            <a href="@Url.Action("AddBasket","i",new {id=item.Product.Id})" class="btn btn-warning btn-xs">
+                            <a href="@Url.Action("AddBasket","Home",new {id=item.Product.Id})" class="btn btn-warning btn-xs">
                                 <span class="glyphicon glyphicon-plus"></span>
                             </a>
-                            <a href="@Url.Action("AddBasket","i",new {id=item.Product.Id,remove=true})" class="btn btn-info btn-xs">
+                            <a href="@Url.Action("AddBasket","Home",new {id=item.Product.Id,remove=true})" class="btn btn-info btn-xs">
                                 <span class="glyphicon glyphicon-minus"></span>
                             </a>
                             &nbsp;|&nbsp;
-                            <a href="@Url.Action("Product","i",new{id=item.Product.Id})" class="btn btn-info btn-xs">
+                            <a href="@Url.Action("Product","Home",new{id=item.Product.Id})" class="btn btn-info btn-xs">
                                 <span class="glyphicon glyphicon-eye-open"></span>
                             </a>
-                            <a href="@Url.Action("RemoveBasket","i",new {id=item.Product.Id})" class="btn btn-danger btn-xs">
+                            <a href="@Url.Action("RemoveBasket","Home",new {id=item.Product.Id})" class="btn btn-danger btn-xs">
                                 <span class="glyphicon glyphicon-trash"></span>
                             </a>
                         </td>
@@ -70,7 +70,7 @@
                     </td>
                     <td colspan="2" class="text-center">
                         <br />
-                        <a href="@Url.Action("RemoveBasket","i")" class="btn btn-danger btn-sm">
+                        <a href="@Url.Action("RemoveBasket","Home")" class="btn btn-danger btn-sm">
                             <span class="glyphicon glyphicon-trash"></span> Sepeti Boşalt
                         </a>
                         <a href="#" class="btn btn-success btn-sm">

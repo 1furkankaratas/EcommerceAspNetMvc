@@ -53,10 +53,10 @@
 
                                     @foreach (var item in basket)
                                     {
-                                        <li><a href="@Url.Action("Product","i",new {id=item.Product.Id})">@item.Product.Name (@item.Count)</a></li>
+                                        <li><a href="@Url.Action("Product","Home",new {id=item.Product.Id})">@item.Product.Name (@item.Count)</a></li>
                                     }
                                     <li class="divider" role="separator"></li>
-                                    <li><a href="@Url.Action("Basket","i")">Sepete Git</a></li>
+                                    <li><a href="@Url.Action("Basket","Home")">Sepete Git</a></li>
                                 </ul>
 
                             </li>

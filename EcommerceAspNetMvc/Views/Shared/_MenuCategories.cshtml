@@ -11,14 +11,14 @@
     if (cat.Categories1.Any())
     {
         <li class="dropdown">
-            <a class="dropdown-toggle" href="@Url.Action("index","i",new {id=cat.Id})">@cat.Name<span class="caret"></span></a>
+            <a class="dropdown-toggle" href="@Url.Action("index","Home",new {id=cat.Id})">@cat.Name<span class="caret"></span></a>
             @_MenuHelper.MenuRecursive(cat.Categories1.ToList())
         </li>
     }
     else
     {
         <li>
-            <a href="@Url.Action("index","i",new {id=cat.Id})">@cat.Name</a>
+            <a href="@Url.Action("index","Home",new {id=cat.Id})">@cat.Name</a>
         </li>
     }
 }

@@ -7,10 +7,10 @@
             <h3>@Model.Name</h3>
             <p>@Model.Description</p>
             <p>
-                <a href="@Url.Action("AddBasket","i",new {id=Model.Id})" class="btn btn-success">
+                <a href="@Url.Action("AddBasket","Home",new {id=Model.Id})" class="btn btn-success">
                     <span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;Sepete Ekle
                 </a>
-                <a href="@Url.Action("Product","i",new {id=Model.Id})" class="btn btn-info">
+                <a href="@Url.Action("Product","Home",new {id=Model.Id})" class="btn btn-info">
                     <span class="glyphicon glyphicon-info-sign"></span>&nbsp;Bilgi
                 </a>
             </p>

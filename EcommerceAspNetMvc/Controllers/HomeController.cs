@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace EcommerceAspNetMvc.Controllers
 {
-    public class iController : BaseController
+    public class HomeController : BaseController
     {
 
 
@@ -51,7 +51,7 @@ namespace EcommerceAspNetMvc.Controllers
             var product = Context.Products.FirstOrDefault(x => x.Id == id);
             if (product == null)
             {
-                return RedirectToAction("Index", "i");
+                return RedirectToAction("Index", "Home");
             }
             ProductViewModel model = new ProductViewModel()
             {
@@ -83,7 +83,7 @@ namespace EcommerceAspNetMvc.Controllers
                 ViewBag.info = "Yorum eklenirken bir hata meydana geldi" + " -> " + e.Message;
 
             }
-            return RedirectToAction("Product", "i");
+            return RedirectToAction("Product", "Home");
         }
 
         [HttpGet]
@@ -144,7 +144,7 @@ namespace EcommerceAspNetMvc.Controllers
             basket.RemoveAll(x => x.Count < 1);
             Session["Basket"] = basket;
 
-            return RedirectToAction("Basket", "i");
+            return RedirectToAction("Basket", "Home");
         }
 
 
@@ -186,7 +186,7 @@ namespace EcommerceAspNetMvc.Controllers
                 Session["Basket"] = basket;
             }
 
-            return RedirectToAction("Basket", "i");
+            return RedirectToAction("Basket", "Home");
 
         }
 
