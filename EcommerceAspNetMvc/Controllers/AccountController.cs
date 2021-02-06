@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -12,7 +13,8 @@ namespace EcommerceAspNetMvc.Controllers
     [RoutePrefix("Account")]
     public class AccountController : BaseController
     {
-        
+        private Addresses adress;
+
         [HttpGet]
         public ActionResult Register()
         {
@@ -32,20 +34,20 @@ namespace EcommerceAspNetMvc.Controllers
 
                 //TODO:Email kontrol edilecek
                 user.Member.MemberType = MemberTypes.Customer;
-                user.Member.AddedDate=DateTime.Now;
-                
+                user.Member.AddedDate = DateTime.Now;
+
                 Context.Members.Add(user.Member);
                 Context.SaveChanges();
-                return RedirectToAction("Login","Account");
+                return RedirectToAction("Login", "Account");
             }
             catch (Exception e)
             {
                 ViewBag.info = "Bir hata meydana geldi" + " -> " + e.Message;
-                return View(user);;
+                return View(user); ;
             }
 
 
-            
+
         }
 
         [HttpGet]
@@ -62,7 +64,7 @@ namespace EcommerceAspNetMvc.Controllers
             {
                 var user = Context.Members.FirstOrDefault(x =>
                     x.Password == model.Member.Password && x.Email == model.Member.Email);
-                if (user!=null)
+                if (user != null)
                 {
                     Session["logonuser"] = user;
                     return RedirectToAction("index", "i");
@@ -83,7 +85,7 @@ namespace EcommerceAspNetMvc.Controllers
         public ActionResult Logout()
         {
             Session["logonuser"] = null;
-            return RedirectToAction("Login","Account");
+            return RedirectToAction("Login", "Account");
         }
 
         public ActionResult Profil()
@@ -91,15 +93,15 @@ namespace EcommerceAspNetMvc.Controllers
             //TODO: id ile profile erişim kodlanacak
             var user = CurrentUser();
 
-            if (user==null)
+            if (user == null)
             {
-               return RedirectToAction("index", "i");
+                return RedirectToAction("index", "i");
             }
 
             ProfilViewModel model = new ProfilViewModel()
             {
                 Member = user,
-                Addresses = Context.Addresses.Where(x=>x.Member_Id==user.Id).ToList()
+                Addresses = Context.Addresses.Where(x => x.Member_Id == user.Id).ToList()
             };
 
             return View(model);
@@ -125,7 +127,7 @@ namespace EcommerceAspNetMvc.Controllers
 
         [Route("~/Profil/Edit")]
         [HttpPost]
-        public ActionResult ProfilEdit(ProfilViewModel model,HttpPostedFileBase img)
+        public ActionResult ProfilEdit(ProfilViewModel model, HttpPostedFileBase img)
         {
             try
             {
@@ -137,7 +139,7 @@ namespace EcommerceAspNetMvc.Controllers
                 }
 
                 var cuser = Context.Members.FirstOrDefault(x => x.Id == user.Id);
-                if (cuser!=null)
+                if (cuser != null)
                 {
                     cuser.Bio = model.Member.Bio;
                     cuser.Name = model.Member.Name;
@@ -153,24 +155,125 @@ namespace EcommerceAspNetMvc.Controllers
 
                         string fileName = DateTime.Now.Month + "-" + DateTime.Now.Day + "-" +
                                           Path.GetFileName(img.FileName);
-                        img.SaveAs(path +fileName );
+                        img.SaveAs(path + fileName);
                         cuser.ProfileImageName = fileName;
                     }
                 }
 
-                
+
                 Context.SaveChanges();
 
                 Session["logonuser"] = cuser;
             }
             catch (Exception e)
             {
-                ViewBag.info = "Bir hata meydana geldi" + " -> " +e.Message;
+                ViewBag.info = "Bir hata meydana geldi" + " -> " + e.Message;
                 return View(model);
             }
 
 
-            return RedirectToAction("Profil","Account");
+            return RedirectToAction("Profil", "Account");
         }
+
+
+        [HttpGet]
+        public ActionResult AddAddress()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddAddress(AddAddressViewModel model)
+        {
+
+            try
+            {
+                model.Address.AddedDate = DateTime.Now;
+                model.Address.Member_Id = CurrentUserId();
+                model.Address.ModifiedDate = DateTime.Now;
+                model.Address.Id = Guid.NewGuid();
+
+                Context.Addresses.Add(model.Address);
+                Context.SaveChanges();
+            }
+            catch
+            {
+                TempData["info"] = "Adres eklenirlen bir hata meydana geldi";
+            }
+
+
+            return RedirectToAction("Profil", "Account");
+        }
+
+
+        [HttpGet]
+        public ActionResult RemoveAddress(int id, string addressId)
+        {
+
+            try
+            {
+                if (CurrentUserId() == id)
+                {
+                    var curAddress = Context.Addresses.FirstOrDefault(x => x.Id.ToString() == addressId);
+
+                    Context.Entry(curAddress).State = EntityState.Deleted;
+                    Context.SaveChanges();
+
+
+                }
+            }
+            catch
+            {
+                TempData["info"] = "Bir hata meydana geldi";
+            }
+
+
+            return RedirectToAction("Profil", "Account");
+        }
+
+
+        [HttpGet]
+        public ActionResult EditAddress(int id, string addressId)
+        {
+            AddAddressViewModel curAddress = new AddAddressViewModel();
+            if (CurrentUserId() == id && addressId != null)
+            {
+                curAddress.Address = Context.Addresses.FirstOrDefault(x => x.Id.ToString() == addressId);
+
+            }
+
+
+
+            return View(curAddress);
+        }
+
+
+        [HttpPost]
+        public ActionResult EditAddress(AddAddressViewModel model)
+        {
+            try
+            {
+                var curAddress = Context.Addresses.FirstOrDefault(x => x.Id == model.Address.Id);
+
+                if (curAddress!=null)
+                {
+                    curAddress.Name = model.Address.Name;
+                    curAddress.AdresDescription = model.Address.AdresDescription;
+                    curAddress.ModifiedDate=DateTime.Now;
+
+                    Context.Entry(curAddress).State = EntityState.Modified;
+                    Context.SaveChanges();
+
+                }
+            }
+            catch
+            {
+                TempData["info"] = "Bir hata meydana geldi";
+            }
+
+            return RedirectToAction("Profil", "Account");
+        }
+
     }
 }

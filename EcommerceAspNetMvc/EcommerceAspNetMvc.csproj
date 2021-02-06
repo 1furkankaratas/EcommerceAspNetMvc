@@ -216,6 +216,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AddAddressViewModel.cs" />
     <Compile Include="Models\BasketViewModel.cs" />
     <Compile Include="Models\BasketModel.cs" />
     <Compile Include="Models\Enums.cs" />
@@ -246,6 +247,8 @@
     <Content Include="Views\Account\Profil.cshtml" />
     <Content Include="Views\Account\ProfilEdit.cshtml" />
     <Content Include="Views\i\Basket.cshtml" />
+    <Content Include="Views\Account\AddAddress.cshtml" />
+    <Content Include="Views\Account\EditAddress.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

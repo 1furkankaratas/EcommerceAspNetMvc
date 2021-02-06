@@ -50,7 +50,7 @@
             <span class="glyphicon glyphicon-edit"></span> Edit
         </a>
 
-        <a href="@Url.Action("ProfilEdit","Account")" class="btn btn-info">
+        <a href="@Url.Action("AddAddress","Account")" class="btn btn-info">
             <span class="glyphicon glyphicon-plus"></span> Add Address
         </a>
 
@@ -72,23 +72,29 @@
 
             <tbody>
 
-                @foreach (var item in Model.Addresses)
+                @if (Model.Addresses.Any())
                 {
-                    <tr>
-                        <td>@item.Name</td>
-                        <td>@item.AdresDescription</td>
-                        <td>@item.AddedDate.ToShortDateString()</td>
-                        <td>
-                            <a href="@Url.Action("Product","i",new{})" class="btn btn-info btn-xs">
-                                <span class="glyphicon glyphicon-edit"></span>
-                            </a>
-                            <a href="@Url.Action("RemoveBasket","i",new {})" class="btn btn-danger btn-xs">
-                                <span class="glyphicon glyphicon-trash"></span>
-                            </a>
-                        </td>
-                    </tr>
+                    foreach (var item in Model.Addresses)
+                    {
+                        <tr>
+                            <td>@item.Name</td>
+                            <td>@item.AdresDescription</td>
+                            <td>@item.AddedDate.ToShortDateString()</td>
+                            <td>
+                                <a href="@Url.Action("EditAddress","Account",new {id = Model.Member.Id,addressId=item.Id})" class="btn btn-info btn-xs">
+                                    <span class="glyphicon glyphicon-edit"></span>
+                                </a>
+                                <a href="@Url.Action("RemoveAddress","Account",new {id = Model.Member.Id,addressId=item.Id})" class="btn btn-danger btn-xs">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </a>
+                            </td>
+                        </tr>
+                    }
                 }
-            <tr></tr>
+                else
+                {
+                    <tr><td colspan="4">Henüz hiçbir adres eklenmemiş</td></tr>
+                }
             </tbody>
 
         </table>
